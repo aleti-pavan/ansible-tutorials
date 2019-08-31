@@ -1,0 +1,15 @@
+---
+- hosts: all
+  remote_user: ubuntu
+  become: yes
+  tasks:
+    - name: create "{{ item }}" user
+      user:
+        name: "{{ item }}"
+        state: absent
+        update_password: on_create
+        password: "pavan44"
+      with_items:
+        - pavan
+        - vinay
+        - madhu

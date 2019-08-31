@@ -1,0 +1,21 @@
+---
+- hosts: all
+  remote_user: ubuntu
+  #gather_facts: no
+  vars:
+    os: "{{ my_os }}"
+  tasks:
+    - name: Install nginx on Debian
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+      become: yes
+      when: ansible_os_family == os
+    - name: Install nginx on RedHat
+      yum:
+        name: nginx
+        state: present
+        update_cache: yes
+      become: yes
+      when: ansible_os_family == "RedHat"

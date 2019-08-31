@@ -1,0 +1,11 @@
+---
+- hosts: all
+  remote_user: ubuntu
+  tasks:
+    - name: register printenv
+      shell: printenv
+      register: output
+    - name: print output
+      debug:
+      #  var: output
+         msg: "Here is the output: {{ output }}"

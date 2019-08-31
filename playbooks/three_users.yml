@@ -1,0 +1,24 @@
+---
+- hosts: all
+  remote_user: ubuntu
+  become: yes
+  tasks:
+    - name: create pavan user
+      user:
+        name: pavan
+        state: present
+        update_password: on_create
+        password: "pavan44"
+
+    - name: create vinay user
+      user:
+        name: vinay
+        state: present
+        update_password: on_create
+        password: "vinay44"
+    - name: create madhu user
+      user:
+        name: madhu
+        state: present
+        update_password: on_create
+        password: "madhu44"

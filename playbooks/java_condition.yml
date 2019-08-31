@@ -1,0 +1,16 @@
+---
+- hosts: all
+  remote_user: ubuntu
+  tasks:
+   -  name: install java on ubuntu
+      apt:
+       name: openjdk-8-jdk
+       state: present
+      become: yes
+      when: ansible_facts["os_family"] == "Debian"
+   -  name: install java on redhat
+      apt:
+        name: java-1.8.0-openjdk
+        state: present
+      become: yes
+      when: ansible_facts["os_family"] == "RedHat"
